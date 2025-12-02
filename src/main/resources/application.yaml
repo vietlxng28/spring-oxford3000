@@ -1,0 +1,42 @@
+server:
+    port: 8080
+
+spring:
+    application:
+        name: sandbox
+    datasource:
+        url: jdbc:mariadb://localhost:3306/oxford3000?createDatabaseIfNotExist=true
+        username: root
+        password: 123456
+        driver-class-name: org.mariadb.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MariaDBDialect
+                '[format_sql]': true
+    jackson:
+        property-naming-strategy: SNAKE_CASE
+        default-property-inclusion: non_null
+        deserialization:
+            fail-on-unknown-properties: false
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: Asia/Ho_Chi_Minh
+springdoc:
+    api-docs:
+        path: /v3/api-docs
+    swagger-ui:
+        path: /swagger-ui-oxford3000.html
+        enabled: true
+        operations-sorter: method
+        tags-sorter: alpha
+        display-request-duration: true
+        csrf:
+            enabled: false
+security:
+    jwt:
+        secret: "fake-secret-key"
+        access-expiration: 900000
+        refresh-expiration: 604800000
