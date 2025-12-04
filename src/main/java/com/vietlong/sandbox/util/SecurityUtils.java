@@ -1,15 +1,9 @@
 package com.vietlong.sandbox.util;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

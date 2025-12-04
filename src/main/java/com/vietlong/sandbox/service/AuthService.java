@@ -1,5 +1,6 @@
 package com.vietlong.sandbox.service;
 
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.vietlong.sandbox.dto.request.LoginRequest;
@@ -14,6 +15,7 @@ import lombok.AllArgsConstructor;
 public class AuthService {
   private final UserRepository userRepo;
   private final SecurityUtils securityUtils;
+  private final RedisTemplate<String, Object> redisTemplate;
 
   public String login(LoginRequest request) {
     User user = userRepo.findByUsername(request.getUsername());
@@ -21,6 +23,14 @@ public class AuthService {
       throw new RuntimeException("User not found");
     }
     
+    // TO DO : check password
+
+    String accessToken = securityUtils.generateAccessToken(user.getId(), user.getUsername());
+    String refreshToken = securityUtils.generateRefreshToken(user.getId(), user.getUsername());
+
+  String rediskey = "SEC:PERMISSION:" + user.getId();
+  
+
     return null;
   }
 }
