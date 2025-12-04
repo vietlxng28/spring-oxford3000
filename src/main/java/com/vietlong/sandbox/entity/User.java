@@ -14,13 +14,16 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
+@EqualsAndHashCode(exclude = {"permissions"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users", schema = "users")
+@Table(name = "users", schema = "oxford3000")
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +35,7 @@ public class User {
   @Column(name = "password", nullable = false)
   private String password;
 
+  @JsonIgnore
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
   private Set<Permissions> permissions;

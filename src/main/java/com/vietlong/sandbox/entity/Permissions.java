@@ -11,11 +11,14 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "permissions", schema = "sandbox")
+@Table(name = "permissions", schema = "oxford3000")
 @Data
+@EqualsAndHashCode(exclude = {"users"})
 @AllArgsConstructor
 @NoArgsConstructor
 public class Permissions {
@@ -29,6 +32,7 @@ public class Permissions {
   @Column(name = "description")
   private String description;
 
+  @JsonIgnore
   @ManyToMany(mappedBy = "permissions")
   private Set<User> users;
 }
