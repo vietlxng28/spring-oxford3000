@@ -3,8 +3,10 @@ package com.vietlong.sandbox.dto.response;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Builder;
 
 @Data
+@Builder
 @AllArgsConstructor
 public class TokenResponse {
   @Schema(description = "The JWT access token")
