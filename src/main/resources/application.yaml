@@ -28,3 +28,8 @@ springdoc:
         display-request-duration: true
         csrf:
             enabled: false
+security:
+    jwt:
+        secret: "fake-secret-key"
+        access-expiration: 900000
+        refresh-expiration: 604800000

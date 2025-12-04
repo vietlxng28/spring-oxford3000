@@ -1,4 +1,4 @@
-package com.vietlong.sandbox.dto;
+package com.vietlong.sandbox.dto.request;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
