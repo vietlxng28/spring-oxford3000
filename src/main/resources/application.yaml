@@ -17,6 +17,13 @@ spring:
             hibernate:
                 dialect: org.hibernate.dialect.MariaDBDialect
                 '[format_sql]': true
+    jackson:
+        property-naming-strategy: SNAKE_CASE
+        default-property-inclusion: non_null
+        deserialization:
+            fail-on-unknown-properties: false
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: Asia/Ho_Chi_Minh
 springdoc:
     api-docs:
         path: /v3/api-docs
